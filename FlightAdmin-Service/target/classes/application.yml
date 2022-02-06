@@ -1,0 +1,39 @@
+server:
+  port: 8084
+spring:
+    mvc:
+      pathmatch:
+            matching-strategy: ant-path-matcher
+    application:
+        name: flightadmin-ws
+    datasource:
+        url: jdbc:mysql://localhost:3306/flightadmin
+        username: root
+        password: pass@word1
+       # driver-class-name: org.h2.Driver        driver-class-name: com.mysql.jdbc.Driver 
+    h2:
+        console:
+            enabled: true
+            settings:
+                web-allow-others: true
+            path: /h2
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        defer-datasource-initialization: true
+    security:
+        user:
+            name: nilay
+            password: pass@1234
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+logging:
+    file:
+        name: flightadmin-ws.log
+
+eureka:  client:    register-with-eureka: true    fetch-registry: true    service-url:      defaultZone: http://localhost:8761/eureka/  instance:    hostname: localhost
